@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-
-<div class="flex justify-center items-center h-screen">
+<section class="flex justify-center items-center h-screen">
     <form
         action="{{ route('login') }}"
         method="post"
@@ -57,7 +56,7 @@
             <input
                 class="bg-sky-600 px-14 py-3 text-white font-bold cursor-pointer rounded-md hover:bg-sky-700 mb-5"
                 type="submit"
-                value="Register"
+                value="Login"
             />
             <a
                 href="{{ route('register') }}"
@@ -66,4 +65,4 @@
             >
         </div>
     </form>
-</div>
+</section>

@@ -18,6 +18,10 @@ class LoginController extends Controller
             return back()->with('message', 'incorrect credentials');
         }
 
+        if(auth()->check() && !auth()->user()->profile_complete)
+        {
+            return redirect()->route('profile');
+        }
         return redirect()->route('dashboard');
     }
 }
