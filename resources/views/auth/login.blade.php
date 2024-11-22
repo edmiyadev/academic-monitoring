@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="flex justify-center items-center h-screen">
+    <section class="flex justify-center items-center h-screen bg-gray-200">
         <form
             action="{{ route('login') }}"
             method="post"
