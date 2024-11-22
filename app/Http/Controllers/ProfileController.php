@@ -8,6 +8,9 @@ class ProfileController extends Controller
 {
     public function index()
     {
+        if (auth()->user()->profile_complete) {
+            return redirect()->route('dashboard');
+        }
         return view('profile');
     }
 
@@ -15,12 +18,11 @@ class ProfileController extends Controller
     {
         $user = auth()->user()->profile()->create([
             'educational_level' => $request['educational-level'],
-            'educational_institution' =>$request['educational-institution'],
+            'educational_institution' => $request['educational-institution'],
             'career' => $request['career'],
         ]);
-
-        $user->update([
-    'profile_complete' => true,
+        auth()->user()->update([
+            'profile_complete' => true,
         ]);
 
         return redirect()->route('dashboard');

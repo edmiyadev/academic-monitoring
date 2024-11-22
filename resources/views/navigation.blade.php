@@ -8,8 +8,8 @@
             <div class="flex gap-4">
                 <a href="">Calendario</a>
                 <a href="">Progreso</a>
-                <a href="{{route('pensum')}}">Tareas</a>
-                <a href="">Pensum</a>
+                <a href="">Tareas</a>
+                <a href="{{route('pensum')}}">Pensum</a>
             </div>
             <div
                 class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600"

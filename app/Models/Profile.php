@@ -15,8 +15,8 @@ class Profile extends Model
         'educational_institution',
     ];
 
-//    public function user(): HasOne
-//    {
-//        return $this->hasOne(User::class);
-//    }
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class);
+    }
 }
