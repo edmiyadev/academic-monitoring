@@ -54,7 +54,7 @@ class ImportSubjectsCommand extends Command
                     'semester' => (int)$row['Semestre']
                 ];
 
-                Subject::create($subjectData);
+                $subject = Subject::create($subjectData);
 
                 $count++;
                 $this->output->progressAdvance();

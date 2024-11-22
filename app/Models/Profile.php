@@ -11,12 +11,15 @@ class Profile extends Model
     protected $fillable = [
         'user_id',
         'career_id',
-        'educational_level',
-        'educational_institution',
     ];
 
-    public function user(): HasOne
+    public function user(): BelongsTo
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function career(): BelongsTo
+    {
+        return $this->belongsTo(Career::class);
     }
 }

@@ -11,12 +11,17 @@ class Subject extends Model
     use HasFactory;
 
     protected $fillable = [
-        'clave',
+        'code',
         'name',
-        'ht',
-        'hp',
-        'cr',
-        'semester',
-        'prerequisites'
+        'theoretical_hours',
+        'practical_hours',
+        'credits',
     ];
+
+    public function pensums()
+    {
+        return $this->belongsToMany(Pensum::class)
+            ->withPivot('semester', 'prerequisites')
+            ->withTimestamps();
+    }
 }

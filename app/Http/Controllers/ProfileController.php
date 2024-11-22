@@ -11,6 +11,7 @@ class ProfileController extends Controller
         if (auth()->user()->profile_complete) {
             return redirect()->route('dashboard');
         }
+
         return view('profile');
     }
 

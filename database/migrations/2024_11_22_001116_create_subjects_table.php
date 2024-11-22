@@ -18,8 +18,6 @@ return new class extends Migration
             $table->unsignedTinyInteger('theoretical_hours');
             $table->unsignedTinyInteger('practical_hours');
             $table->unsignedTinyInteger('credits');
-            $table->unsignedTinyInteger('semester');
-            $table->json('prerequisites')->nullable();
             $table->timestamps();
         });
     }
