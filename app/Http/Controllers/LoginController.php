@@ -20,7 +20,7 @@ class LoginController extends Controller
 
         if(auth()->check() && !auth()->user()->profile_complete)
         {
-            return redirect()->route('profile');
+            return redirect()->route('profile.index');
         }
         return redirect()->route('dashboard');
     }
