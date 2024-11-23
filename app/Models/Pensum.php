@@ -9,12 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Pensum extends Model
 {
-    /** @use HasFactory<\Database\Factories\PensumFactory> */
-    use HasFactory;
-
-    protected $fillable = [
-        'carrer_id',
-    ];
+    protected $fillable = ['career_id'];
 
     public function carrer(): BelongsTo
     {

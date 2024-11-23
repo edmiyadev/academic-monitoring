@@ -11,8 +11,8 @@
             </div>
 
             <div>
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 border-4 rounded-3xl">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100 border rounded-3xl">
                     <tr>
                         <th scope="col" class="px-6 py-3">Clave</th>
                         <th scope="col" class="px-6 py-3">Asignatura</th>
@@ -25,7 +25,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach (\App\Models\Subject::all() as $subject)
+                    @foreach ($pensum->subjects as $subject)
                         <tr class="bg-white border-b">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $subject->code }}
@@ -43,10 +43,10 @@
                                 {{ $subject->credits }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $subject->prerequisites }}
+                                {{ json_decode($subject->pivot->prerequisites) }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $subject->semester }}
+                                {{ $subject->pivot->semester }}
                             </td>
                         </tr>
                     @endforeach
