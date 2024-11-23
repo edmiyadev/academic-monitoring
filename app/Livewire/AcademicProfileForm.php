@@ -2,24 +2,24 @@
 
 namespace App\Livewire;
 
-use App\Models\Profile;
-use Illuminate\Support\Facades\Http;
-use Livewire\Component;
 use App\Models\Career;
-use App\Enums\EducationalLevelEnum;
-use App\Enums\EducationalInstitutionEnum;
+use App\Models\Profile;
+use Livewire\Component;
 
 class AcademicProfileForm extends Component
 {
     public $educationalLevel;
+
     public $educationalInstitution;
+
     public $selectedCareer;
+
     public $availableCareers = [];
 
     protected $rules = [
         'educationalLevel' => 'required',
         'educationalInstitution' => 'required',
-        'selectedCareer' => 'required|exists:careers,id'
+        'selectedCareer' => 'required|exists:careers,id',
     ];
 
     public function updatedEducationalLevel()

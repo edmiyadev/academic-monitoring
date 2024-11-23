@@ -9,14 +9,16 @@ use Illuminate\Support\Facades\Storage;
 class ImportSubjectsCommand extends Command
 {
     protected $signature = 'import:subjects {file?}';
+
     protected $description = 'Import subjects from CSV file';
 
     public function __invoke()
     {
         $fileName = $this->argument('file') ?? 'subjects.csv';
 
-        if (!Storage::exists("csv/{$fileName}")) {
-            $this->error("CSV file not found!");
+        if (! Storage::exists("csv/{$fileName}")) {
+            $this->error('CSV file not found!');
+
             return;
         }
 
@@ -32,7 +34,7 @@ class ImportSubjectsCommand extends Command
             'HP' => 'practical_hours',
             'CR' => 'credits',
             'Prerequisitos' => 'prerequisites',
-            'Semestre' => 'semester'
+            'Semestre' => 'semester',
         ];
 
         $count = 0;
@@ -47,11 +49,11 @@ class ImportSubjectsCommand extends Command
                 $subjectData = [
                     'code' => $row['Clave'],
                     'name' => $row['Asignatura'],
-                    'theoretical_hours' => (int)$row['HT'],
-                    'practical_hours' => (int)$row['HP'],
-                    'credits' => (int)$row['CR'],
+                    'theoretical_hours' => (int) $row['HT'],
+                    'practical_hours' => (int) $row['HP'],
+                    'credits' => (int) $row['CR'],
                     'prerequisites' => $row['Prerequisitos'] ?: null,
-                    'semester' => (int)$row['Semestre']
+                    'semester' => (int) $row['Semestre'],
                 ];
 
                 $subject = Subject::create($subjectData);
@@ -60,7 +62,7 @@ class ImportSubjectsCommand extends Command
                 $this->output->progressAdvance();
             } catch (\Exception $e) {
                 $errors++;
-                $this->error("Error in the line {$count} ({$row['Clave']}): " . $e->getMessage());
+                $this->error("Error in the line {$count} ({$row['Clave']}): ".$e->getMessage());
             }
         }
 
@@ -68,7 +70,7 @@ class ImportSubjectsCommand extends Command
 
         $this->output->progressFinish();
 
-        $this->info("Import completed:");
+        $this->info('Import completed:');
         $this->info("- Imported subjects: {$count}");
 
         if ($errors > 0) {

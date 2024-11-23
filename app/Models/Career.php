@@ -11,7 +11,7 @@ class Career extends Model
     protected $fillable = [
         'name',
         'educational_institution',
-        'educational_level'
+        'educational_level',
     ];
 
     public function pensum(): HasOne

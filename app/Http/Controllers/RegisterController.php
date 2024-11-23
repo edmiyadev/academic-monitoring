@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRegisterRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -20,11 +19,10 @@ class RegisterController extends Controller
         User::create($request->validated());
 
         $isAuth = auth()->attempt($request->only('email', 'password'));
-        
-        if($isAuth){
+
+        if ($isAuth) {
             return redirect()->route('dashboard');
         }
-
 
     }
 }

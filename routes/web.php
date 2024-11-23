@@ -21,6 +21,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/pensum', fn() => view('pensum'))->name('pensum');
+    Route::get('/pensum', fn () => view('pensum'))->name('pensum');
 });
-

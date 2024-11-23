@@ -25,11 +25,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Career::create([
-           'name' => 'Licenciatura en Informatica',
-           'educational_institution' => EducationalInstitutionEnum::UASD->value,
-            'educational_level' => EducationalLevelEnum::GRADE->value
+            'name' => 'Licenciatura en Informatica',
+            'educational_institution' => EducationalInstitutionEnum::UASD->value,
+            'educational_level' => EducationalLevelEnum::GRADE->value,
         ]);
-
 
     }
 }
