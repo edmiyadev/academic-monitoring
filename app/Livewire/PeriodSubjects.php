@@ -2,21 +2,23 @@
 
 namespace App\Livewire;
 
-use App\Models\StudentEnrollment;
-use Livewire\Component;
-
 use App\Models\Period;
+use App\Models\StudentEnrollment;
 use App\Models\Subject;
+use Livewire\Component;
 
 class PeriodSubjects extends Component
 {
     public $periodId;
+
     public $period;
+
     public $showModal = false;
+
     public $selectedSubjectId; // Nueva propiedad para el ID de la materia seleccionada
 
     protected $rules = [
-        'selectedSubjectId' => 'required|exists:subjects,id'
+        'selectedSubjectId' => 'required|exists:subjects,id',
     ];
 
     public function mount(Period $period, $periodId)
@@ -44,7 +46,7 @@ class PeriodSubjects extends Component
 
         return view('livewire.period-subjects', [
             'assignedSubjects' => $assignedSubjects,
-            'availableSubjects' => $availableSubjects
+            'availableSubjects' => $availableSubjects,
         ]);
     }
 
@@ -90,5 +92,4 @@ class PeriodSubjects extends Component
     {
         $this->selectedSubjectId = '';
     }
-
 }

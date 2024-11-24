@@ -19,7 +19,7 @@ class ImportSubjectsCommand extends Command
     {
         $fileName = $this->argument('file') ?? 'subjects.csv';
 
-        if (!Storage::exists("csv/{$fileName}")) {
+        if (! Storage::exists("csv/{$fileName}")) {
             $this->error('CSV file not found!');
 
             return;
@@ -31,7 +31,7 @@ class ImportSubjectsCommand extends Command
         $headers = fgetcsv($handle);
         $headers2 = fgetcsv($handle);
 
-        $institution = $headers[0] == EducationalInstitutionEnum::UASD->name ? EducationalInstitutionEnum::UASD->value : "";
+        $institution = $headers[0] == EducationalInstitutionEnum::UASD->name ? EducationalInstitutionEnum::UASD->value : '';
 
         $career = Career::create([
             'educational_institution' => $institution,
@@ -58,7 +58,6 @@ class ImportSubjectsCommand extends Command
 
         $this->output->progressStart();
 
-
         while (($data = fgetcsv($handle)) !== false) {
             $row = array_combine($headers2, $data);
 
@@ -66,17 +65,17 @@ class ImportSubjectsCommand extends Command
                 $subjectData = [
                     'code' => $row['Clave'],
                     'name' => $row['Asignatura'],
-                    'theoretical_hours' => (int)$row['HT'],
-                    'practical_hours' => (int)$row['HP'],
-                    'credits' => (int)$row['CR'],
+                    'theoretical_hours' => (int) $row['HT'],
+                    'practical_hours' => (int) $row['HP'],
+                    'credits' => (int) $row['CR'],
                     'prerequisites' => $row['Prerequisitos'] ?: null,
-                    'semester' => (int)$row['Semestre'],
+                    'semester' => (int) $row['Semestre'],
                 ];
 
                 $subject = Subject::create($subjectData);
 
                 $pensum->subjects()->attach($subject->id, [
-                    'semester' => (int)$row['Semestre'],
+                    'semester' => (int) $row['Semestre'],
                     'prerequisites' => $row['Prerequisitos'] ? json_encode($row['Prerequisitos']) : null,
                 ]);
 
@@ -84,7 +83,7 @@ class ImportSubjectsCommand extends Command
                 $this->output->progressAdvance();
             } catch (\Exception $e) {
                 $errors++;
-                $this->error("Error in the line {$count} ({$row['Clave']}): " . $e->getMessage());
+                $this->error("Error in the line {$count} ({$row['Clave']}): ".$e->getMessage());
             }
         }
 

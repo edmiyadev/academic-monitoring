@@ -2,9 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Enums\EducationalInstitutionEnum;
-use App\Enums\EducationalLevelEnum;
-use App\Models\Career;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;

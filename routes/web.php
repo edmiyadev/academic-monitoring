@@ -5,8 +5,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PensumController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
-use App\Livewire\PeriodSubjects;
-use App\Models\Pensum;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
         return view('periods');
     })->name('periods');
 
-    Route::get('/period/{period}/subjects', function ($period){
+    Route::get('/period/{period}/subjects', function ($period) {
 
         return view('period', ['periodId' => $period]);
     })->name('period.subjects');

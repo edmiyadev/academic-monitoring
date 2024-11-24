@@ -3,29 +3,33 @@
 namespace App\Livewire;
 
 use App\Models\Period;
-use App\Models\Subject;
 use Livewire\Component;
 
 class PeriodManagement extends Component
 {
     // app/Http/Livewire/PeriodManagement.php
     public $showModal = false;
+
     public $isEditing = false;
+
     public $periodId;
+
     public $name;
+
     public $start_date;
+
     public $end_date;
 
     protected $rules = [
         'name' => 'required|min:3',
         'start_date' => 'required|date',
-        'end_date' => 'required|date|after:start_date'
+        'end_date' => 'required|date|after:start_date',
     ];
 
     public function render()
     {
         return view('livewire.period-management', [
-            'periods' => Period::latest()->get()
+            'periods' => Period::latest()->get(),
         ]);
     }
 
@@ -80,5 +84,3 @@ class PeriodManagement extends Component
         return redirect()->route('period.subjects', $periodId);
     }
 }
-
-
