@@ -7,6 +7,7 @@
         <div class="flex gap-11 items-center">
             <div class="flex gap-4">
                 <a href="">Calendario</a>
+                <a href="{{route('periods')}}">Semestre</a>
                 <a href="">Progreso</a>
                 <a href="">Tareas</a>
                 <a href="{{route('pensum')}}">Pensum</a>
