@@ -11,6 +11,7 @@ class StudentEnrollment extends Model
         'student_id',
         'period_id',
         'subject_id',
+        'status'
     ];
 
     public function student(): BelongsTo

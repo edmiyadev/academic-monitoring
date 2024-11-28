@@ -12,7 +12,7 @@
         </button>
     </div>
 
-    <!-- Tabla de Períodos -->
+    <!-- Table -->
     <div class="overflow-x-auto bg-white rounded-lg shadow">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">

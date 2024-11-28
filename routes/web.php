@@ -8,7 +8,7 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('layouts.app');
+    return redirect()->route('login');
     // implementar logica de reidreccion si esta tutenticado al dashboard sino al login
 });
 
@@ -29,7 +29,6 @@ Route::middleware(['auth'])->group(function () {
     })->name('periods');
 
     Route::get('/period/{period}/subjects', function ($period) {
-
         return view('period', ['periodId' => $period]);
     })->name('period.subjects');
 

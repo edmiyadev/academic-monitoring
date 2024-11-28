@@ -1,15 +1,15 @@
 <nav class="bg-white py-4">
     <div class="flex container justify-between items-center mx-auto">
         <div>
-            <a class="text-2xl mr-3" href="{{route('dashboard')}}">Nombre App</a>
+            <a class="text-2xl font-bold mr-3 text-blue-500" href="{{route('dashboard')}}">EduTrack</a>
         </div>
 
         <div class="flex gap-11 items-center">
             <div class="flex gap-4">
-                <a href="">Calendario</a>
+                <!-- <a href="">Calendario</a> -->
                 <a href="{{route('periods')}}">Semestre</a>
-                <a href="">Progreso</a>
-                <a href="">Tareas</a>
+                <!-- <a href="">Progreso</a> -->
+                <!-- <a href="">Tareas</a> -->
                 <a href="{{route('pensum')}}">Pensum</a>
             </div>
             <div

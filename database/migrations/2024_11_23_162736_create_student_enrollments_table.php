@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\StudentEnrollmentStatusEnum;
 use App\Models\Period;
 use App\Models\Profile;
 use App\Models\Subject;
@@ -16,9 +17,10 @@ return new class extends Migration
     {
         Schema::create('student_enrollments', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Period::class)->constrained();
-            $table->foreignIdFor(Profile::class, 'student_id')->constrained();
-            $table->foreignIdFor(Subject::class)->constrained();
+            $table->foreignIdFor(Period::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Profile::class, 'student_id')->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Subject::class)->constrained()->cascadeOnDelete();
+            $table->unsignedTinyInteger('status')->default(StudentEnrollmentStatusEnum::Pending);
             $table->timestamps();
         });
     }
