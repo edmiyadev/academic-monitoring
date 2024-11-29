@@ -14,14 +14,12 @@ class RegisterController extends Controller
 
     public function store(StoreRegisterRequest $request)
     {
-        // dd($request->validated());
-
         User::create($request->validated());
 
         $isAuth = auth()->attempt($request->only('email', 'password'));
 
         if ($isAuth) {
-            return redirect()->route('dashboard');
+            return redirect()->route('login');
         }
 
     }

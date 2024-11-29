@@ -12,14 +12,19 @@
                 <!-- <a href="">Tareas</a> -->
                 <a href="{{route('pensum')}}">Pensum</a>
             </div>
-            <div
+            <!-- <div
                 class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600"
             >
                 <span class="font-medium text-gray-600 dark:text-gray-300"
                     >JL</span
                 >
-            </div>
+            </div> -->
         </div>
+        <form action="{{route('logout')}}" method="post">
+            @csrf
+            <button type="submit" class="absolute right-0 top-0 mt-5 mr-5">Logout</button>
+
+        </form>
     </div>
 </nav>
 <hr class="border-y-2 border-blue-500" />
