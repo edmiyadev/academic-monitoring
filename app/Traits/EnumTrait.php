@@ -18,4 +18,14 @@ trait EnumTrait
             return $case->value;
         }, self::cases());
     }
+
+    public static function getNameByValue(string $value): ?string
+    {
+        foreach (self::cases() as $case) {
+            if ($case->value == $value) {
+                return $case->name;
+            }
+        }
+        return null;
+    }
 }

@@ -138,13 +138,13 @@
                             {{-- Selección de Estudiante --}}
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2">
-                                    Estudiante
+                                    Asignatura
                                 </label>
                                 <select
                                         wire:model="student_enrollment_id"
                                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 >
-                                    <option value="">Seleccionar Estudiante</option>
+                                    <option value="">Seleccionar Asignatura</option>
                                     @foreach($selectedCourses as $subject)
                                         <option value="{{ $subject->id }}">
                                             {{ $subject->subject->name }}

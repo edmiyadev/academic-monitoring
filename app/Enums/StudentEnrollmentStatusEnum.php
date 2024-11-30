@@ -2,9 +2,12 @@
 
 namespace App\Enums;
 
+use App\Traits\EnumTrait;
+
 enum StudentEnrollmentStatusEnum: int
 {
-    case Pending = 1;
+    use EnumTrait;
+    case Not_Approved = 1;
     case Approved = 2;
     case Progress = 3;
 }

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(Period::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Profile::class, 'student_id')->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Subject::class)->constrained()->cascadeOnDelete();
-            $table->unsignedTinyInteger('status')->default(StudentEnrollmentStatusEnum::Pending);
+            $table->unsignedTinyInteger('status');
             $table->timestamps();
         });
     }
