@@ -26,6 +26,7 @@ trait EnumTrait
                 return $case->name;
             }
         }
+
         return null;
     }
 }

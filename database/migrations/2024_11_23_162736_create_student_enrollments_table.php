@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\StudentEnrollmentStatusEnum;
 use App\Models\Period;
 use App\Models\Profile;
 use App\Models\Subject;

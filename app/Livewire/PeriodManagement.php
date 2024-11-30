@@ -8,10 +8,15 @@ use Livewire\Component;
 class PeriodManagement extends Component
 {
     public $periodId;
+
     public $name;
+
     public $start_date;
+
     public $end_date;
+
     public $showModal = false;
+
     public $isEditing = false;
 
     protected $rules = [

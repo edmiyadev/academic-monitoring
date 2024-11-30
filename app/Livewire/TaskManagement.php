@@ -3,11 +3,11 @@
 namespace App\Livewire;
 
 use App\Enums\TaskStatusEnum;
-use Livewire\Component;
-use Livewire\Attributes\Rule;
-use Livewire\WithPagination;
-use App\Models\Task;
 use App\Models\StudentEnrollment;
+use App\Models\Task;
+use Livewire\Attributes\Rule;
+use Livewire\Component;
+use Livewire\WithPagination;
 
 class TaskManagement extends Component
 {
@@ -32,12 +32,14 @@ class TaskManagement extends Component
     public $end_date;
 
     public $isOpen = false;
+
     public $editMode = false;
+
     public $taskId = null;
 
     public $filterStatus = '';
-    public $search = '';
 
+    public $search = '';
 
     public function render()
     {
@@ -50,7 +52,7 @@ class TaskManagement extends Component
 
         // Aplicar búsqueda por título
         if ($this->search) {
-            $query->where('title', 'like', '%' . $this->search . '%');
+            $query->where('title', 'like', '%'.$this->search.'%');
         }
 
         // Obtener estudiantes para el select
@@ -65,7 +67,7 @@ class TaskManagement extends Component
                 TaskStatusEnum::Pending->value => 'Pendiente',
                 TaskStatusEnum::In_progress->value => 'En Progreso',
                 TaskStatusEnum::Completed->value => 'Completada',
-            ]
+            ],
         ]);
     }
 
@@ -78,7 +80,7 @@ class TaskManagement extends Component
             'status',
             'start_date',
             'end_date',
-            'student_enrollment_id'
+            'student_enrollment_id',
         ]);
         $this->editMode = false;
         $this->isOpen = true;
@@ -96,7 +98,7 @@ class TaskManagement extends Component
             'status',
             'start_date',
             'end_date',
-            'student_enrollment_id'
+            'student_enrollment_id',
         ]);
 
         $this->isOpen = false;
@@ -133,7 +135,7 @@ class TaskManagement extends Component
             'status',
             'start_date',
             'end_date',
-            'student_enrollment_id'
+            'student_enrollment_id',
         ]);
 
         $this->isOpen = false;

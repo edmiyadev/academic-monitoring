@@ -19,12 +19,11 @@ class LoginController extends Controller
 
     public function store(StoreLoginRequest $request)
     {
-        if (!auth()->attempt($request->only('email', 'password'))) {
+        if (! auth()->attempt($request->only('email', 'password'))) {
             return back()->with('message', 'incorrect credentials');
         }
 
-
-        if (!auth()->user()->profile()->exists()) {
+        if (! auth()->user()->profile()->exists()) {
             return redirect()->route('profile.index');
         }
 

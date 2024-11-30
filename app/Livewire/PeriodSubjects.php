@@ -11,14 +11,18 @@ use Livewire\Component;
 class PeriodSubjects extends Component
 {
     public $periodId;
+
     public $period;
+
     public $showModal = false;
+
     public $selectedSubjectId;
+
     public $subjectStatuses = [];
 
     protected $rules = [
         'selectedSubjectId' => 'required|exists:subjects,id',
-//        'subjectStatuses.*' => 'in:' . StudentEnrollmentStatusEnum::getValues(),
+        //        'subjectStatuses.*' => 'in:' . StudentEnrollmentStatusEnum::getValues(),
     ];
 
     public function mount(Period $period, $periodId)
@@ -65,7 +69,7 @@ class PeriodSubjects extends Component
         if ($enrollment) {
             // Update the status
             $enrollment->update([
-                'status' => $status
+                'status' => $status,
             ]);
 
             // Update local status array

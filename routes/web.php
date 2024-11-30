@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
         return view('period', ['periodId' => $period]);
     })->name('period.subjects');
 
-    Route::get('/tasks', function(){
+    Route::get('/tasks', function () {
         return view('tasks');
     })->name('tasks');
 });
