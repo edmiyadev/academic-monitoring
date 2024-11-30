@@ -7,18 +7,12 @@ use Livewire\Component;
 
 class PeriodManagement extends Component
 {
-    // app/Http/Livewire/PeriodManagement.php
-    public $showModal = false;
-
-    public $isEditing = false;
-
     public $periodId;
-
     public $name;
-
     public $start_date;
-
     public $end_date;
+    public $showModal = false;
+    public $isEditing = false;
 
     protected $rules = [
         'name' => 'required|min:3',

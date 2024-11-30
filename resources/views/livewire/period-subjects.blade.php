@@ -75,13 +75,13 @@
                         {{ $subject->name }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ $subject->ht }}
+                        {{ $subject->theoretical_hours }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ $subject->hp }}
+                        {{ $subject->practical_hours }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ $subject->cr }}
+                        {{ $subject->credits }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm">
                         <button
@@ -120,7 +120,7 @@
                     >
                     <select
                         wire:model="selectedSubjectId"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"
                     >
                         <option value="">Seleccione una materia...</option>
                         @foreach($availableSubjects as $subject)

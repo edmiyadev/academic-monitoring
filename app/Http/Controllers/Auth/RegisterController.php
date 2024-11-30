@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRegisterRequest;
 use App\Models\User;
 
@@ -9,6 +10,10 @@ class RegisterController extends Controller
 {
     public function index()
     {
+        if (auth()->check()) {
+            return redirect()->route('dashboard');
+        }
+
         return view('auth.register');
     }
 
@@ -16,11 +21,6 @@ class RegisterController extends Controller
     {
         User::create($request->validated());
 
-        $isAuth = auth()->attempt($request->only('email', 'password'));
-
-        if ($isAuth) {
-            return redirect()->route('login');
-        }
-
+        return redirect()->route('login');
     }
 }

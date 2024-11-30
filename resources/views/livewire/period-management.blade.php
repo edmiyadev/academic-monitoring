@@ -1,4 +1,3 @@
-<!-- resources/views/livewire/period-management.blade.php -->
 <div class="p-6">
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-semibold text-gray-900">
@@ -95,39 +94,41 @@
                     <input
                         type="text"
                         wire:model="name"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"
                     />
                     @error('name')
                     <span class="text-red-600 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
 
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700"
+                <div class="flex justify-between">
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700"
                         >Fecha de Inicio</label
-                    >
-                    <input
-                        type="date"
-                        wire:model="start_date"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                    />
-                    @error('start_date')
-                    <span class="text-red-600 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
+                        >
+                        <input
+                            type="date"
+                            wire:model="start_date"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"
+                        />
+                        @error('start_date')
+                        <span class="text-red-600 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
 
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700"
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700"
                         >Fecha de Fin</label
-                    >
-                    <input
-                        type="date"
-                        wire:model="end_date"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                    />
-                    @error('end_date')
-                    <span class="text-red-600 text-sm">{{ $message }}</span>
-                    @enderror
+                        >
+                        <input
+                            type="date"
+                            wire:model="end_date"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 p-2 border focus:ring-blue-500"
+                        />
+                        @error('end_date')
+                        <span class="text-red-600 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="mt-6 flex justify-end space-x-3">

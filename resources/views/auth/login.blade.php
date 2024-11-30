@@ -61,7 +61,7 @@
                 />
                 <a
                     href="{{ route('register') }}"
-                    class="text-center mb-28 font-extralight"
+                    class="text-center mb-28 font-extralight hover:text-blue-700"
                 >Don't have an account?</a
                 >
             </div>

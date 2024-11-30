@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLoginRequest;
 
 class LoginController extends Controller
@@ -19,10 +20,6 @@ class LoginController extends Controller
     {
         if (! auth()->attempt($request->only('email', 'password'))) {
             return back()->with('message', 'incorrect credentials');
-        }
-
-        if (auth()->check() && ! auth()->user()->profile_complete) {
-            return redirect()->route('profile.index');
         }
 
         return redirect()->route('dashboard');
