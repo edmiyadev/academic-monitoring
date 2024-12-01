@@ -30,7 +30,6 @@ class PeriodSubjects extends Component
         $this->periodId = $periodId;
         $this->period = Period::find($periodId);
 
-        // Initialize subject statuses from existing enrollments
         $enrollments = StudentEnrollment::where('period_id', $this->periodId)->get();
         $this->subjectStatuses = $enrollments->pluck('status', 'subject_id')->toArray();
     }
@@ -46,6 +45,7 @@ class PeriodSubjects extends Component
         $availableSubjects = Subject::whereNotIn('id', function ($query) {
             $query->select('subject_id')
                 ->from('student_enrollments')
+                ->where('student_id', auth()->user()->profile->id)
                 ->where('status', StudentEnrollmentStatusEnum::Progress->value)
                 ->orWhere('status', StudentEnrollmentStatusEnum::Approved->value);
         })->get();

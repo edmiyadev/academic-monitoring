@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\PeriodStatusEnum;
+use App\Models\Profile;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('status')->default(PeriodStatusEnum::In_progress->value);
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
+            $table->foreignIdFor(Profile::class)->constrained();
 
             $table->timestamps();
         });

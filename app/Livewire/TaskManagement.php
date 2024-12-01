@@ -43,7 +43,7 @@ class TaskManagement extends Component
 
     public function render()
     {
-        $query = Task::query();
+        $query = Task::query()->where('profile_id', auth()->user()->profile->id);
 
         // Aplicar filtro de estado si está seleccionado
         if ($this->filterStatus) {
@@ -56,7 +56,7 @@ class TaskManagement extends Component
         }
 
         // Obtener estudiantes para el select
-        $selectedCourses = StudentEnrollment::all();
+        $selectedCourses = StudentEnrollment::where('student_id', auth()->user()->profile->id)->get();
         $tasks = $query->orderBy('created_at', 'desc')
             ->paginate(10);
 
@@ -89,6 +89,10 @@ class TaskManagement extends Component
     public function createTask()
     {
         $validatedData = $this->validate();
+
+        $validatedData = array_merge($validatedData, [
+            'profile_id' => auth()->user()->profile->id,
+        ]);
 
         Task::create($validatedData);
 

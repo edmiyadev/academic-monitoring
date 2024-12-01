@@ -28,7 +28,7 @@ class PeriodManagement extends Component
     public function render()
     {
         return view('livewire.period-management', [
-            'periods' => Period::latest()->get(),
+            'periods' => Period::where('profile_id', auth()->user()->profile->id)->latest()->get(),
         ]);
     }
 
@@ -55,6 +55,7 @@ class PeriodManagement extends Component
                 'name' => $this->name,
                 'start_date' => $this->start_date,
                 'end_date' => $this->end_date,
+                'profile_id' => auth()->user()->id,
             ]);
         }
 
