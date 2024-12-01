@@ -56,7 +56,7 @@
             @forelse($tasks as $task)
                 <tr class="border-b border-gray-200 hover:bg-gray-100">
                     <td class="py-3 px-6 text-left">
-                        {{ \App\Models\Subject::find($task->studentEnrollment->subject_id)->name }}
+                        {{ \App\Models\Subject::find($task?->studentEnrollment?->subject_id)?->name }}
                     </td>
                     <td class="py-3 px-6 text-left">{{ $task->title }}</td>
                     <td class="py-3 px-6 text-left">
