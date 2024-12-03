@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Enums\StudentEnrollmentStatusEnum;
 use App\Enums\TaskStatusEnum;
 use App\Models\StudentEnrollment;
 use App\Models\Task;
@@ -45,18 +46,15 @@ class TaskManagement extends Component
     {
         $query = Task::query()->where('profile_id', auth()->user()->profile->id);
 
-        // Aplicar filtro de estado si está seleccionado
         if ($this->filterStatus) {
             $query->where('status', $this->filterStatus);
         }
 
-        // Aplicar búsqueda por título
         if ($this->search) {
             $query->where('title', 'like', '%'.$this->search.'%');
         }
 
-        // Obtener estudiantes para el select
-        $selectedCourses = StudentEnrollment::where('student_id', auth()->user()->profile->id)->get();
+        $selectedCourses = StudentEnrollment::where('student_id', auth()->user()->profile->id)->where('status', StudentEnrollmentStatusEnum::Progress->value)->get();
         $tasks = $query->orderBy('created_at', 'desc')
             ->paginate(10);
 

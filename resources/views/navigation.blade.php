@@ -1,13 +1,13 @@
 <nav class="bg-white py-4">
     <div class="flex container justify-between items-center mx-auto">
         <div>
-            <a class="text-2xl font-bold mr-3 text-blue-500" href="{{route('dashboard')}}">EduTrack</a>
+            <p class="text-2xl font-bold mr-3 text-blue-500">EduTrack</p>
         </div>
 
         <div class="flex gap-11 items-center">
             <div class="flex gap-4">
-                <a class="hover:text-blue-500 font-bold cursor-pointer delay-150"
-                   href="{{route('dashboard')}}">Dashboard</a>
+                <!-- <a class="hover:text-blue-500 font-bold cursor-pointer delay-150"
+                   href="{{route('dashboard')}}">Dashboard</a> -->
                 <!-- <a href="">Calendario</a> -->
                 <a class="hover:text-blue-500 font-bold cursor-pointer delay-150"
                    href="{{route('periods')}}">Semestre</a>
