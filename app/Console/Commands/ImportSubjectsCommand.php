@@ -19,7 +19,7 @@ class ImportSubjectsCommand extends Command
     {
         $fileName = $this->argument('file') ?? 'subjects.csv';
 
-        if (! Storage::exists("csv/{$fileName}")) {
+        if (!Storage::exists("csv/{$fileName}")) {
             $this->error('CSV file not found!');
 
             return;
@@ -33,13 +33,13 @@ class ImportSubjectsCommand extends Command
 
         $institution = $headers[0] == EducationalInstitutionEnum::UASD->name ? EducationalInstitutionEnum::UASD->value : '';
 
-        $career = Career::create([
+        $career = Career::firstOrCreate([
             'educational_institution' => $institution,
             'name' => $headers[1],
             'educational_level' => 1,
         ]);
 
-        $pensum = Pensum::create([
+        $pensum = Pensum::firstOrCreate([
             'career_id' => $career->id,
         ]);
 
@@ -72,7 +72,13 @@ class ImportSubjectsCommand extends Command
                     'semester' => (int) $row['Semestre'],
                 ];
 
-                $subject = Subject::create($subjectData);
+                $subject = Subject::firstOrCreate([
+                    'code' => $row['Clave'],
+                    'name' => $row['Asignatura'],
+                    'theoretical_hours' => (int) $row['HT'],
+                    'practical_hours' => (int) $row['HP'],
+                    'credits' => (int) $row['CR'],
+                ]);
 
                 $pensum->subjects()->attach($subject->id, [
                     'semester' => (int) $row['Semestre'],
@@ -83,7 +89,7 @@ class ImportSubjectsCommand extends Command
                 $this->output->progressAdvance();
             } catch (\Exception $e) {
                 $errors++;
-                $this->error("Error in the line {$count} ({$row['Clave']}): ".$e->getMessage());
+                $this->error("Error in the line {$count} ({$row['Clave']}): " . $e->getMessage());
             }
         }
 

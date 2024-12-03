@@ -41,14 +41,15 @@ class PeriodSubjects extends Component
                 ->from('student_enrollments')
                 ->where('period_id', $this->periodId);
         })->get();
-
+        
+        $pensumUser = auth()->user()->profile->career->pensum->id;
         $availableSubjects = Subject::whereNotIn('id', function ($query) {
             $query->select('subject_id')
                 ->from('student_enrollments')
                 ->where('student_id', auth()->user()->profile->id)
                 ->where('status', StudentEnrollmentStatusEnum::Progress->value)
                 ->orWhere('status', StudentEnrollmentStatusEnum::Approved->value);
-        })->get();
+        })->whereRelation('pensums', 'pensum_id', 'like', $pensumUser)->get();
 
         $statusOptions = StudentEnrollmentStatusEnum::cases();
 
