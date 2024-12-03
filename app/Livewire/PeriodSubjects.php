@@ -41,7 +41,7 @@ class PeriodSubjects extends Component
                 ->from('student_enrollments')
                 ->where('period_id', $this->periodId);
         })->get();
-        
+
         $pensumUser = auth()->user()->profile->career->pensum->id;
         $availableSubjects = Subject::whereNotIn('id', function ($query) {
             $query->select('subject_id')

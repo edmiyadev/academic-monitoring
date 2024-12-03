@@ -28,11 +28,10 @@ class StudentEnrollmentObserver
         if ($periods->isEmpty()) {
             $period->status = PeriodStatusEnum::Finalized->value;
             $period->save();
-        }else{
+        } else {
             $period->status = PeriodStatusEnum::In_progress->value;
             $period->save();
         }
-
 
     }
 

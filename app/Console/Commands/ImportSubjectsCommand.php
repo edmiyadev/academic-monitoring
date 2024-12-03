@@ -19,7 +19,7 @@ class ImportSubjectsCommand extends Command
     {
         $fileName = $this->argument('file') ?? 'subjects.csv';
 
-        if (!Storage::exists("csv/{$fileName}")) {
+        if (! Storage::exists("csv/{$fileName}")) {
             $this->error('CSV file not found!');
 
             return;
@@ -89,7 +89,7 @@ class ImportSubjectsCommand extends Command
                 $this->output->progressAdvance();
             } catch (\Exception $e) {
                 $errors++;
-                $this->error("Error in the line {$count} ({$row['Clave']}): " . $e->getMessage());
+                $this->error("Error in the line {$count} ({$row['Clave']}): ".$e->getMessage());
             }
         }
 
