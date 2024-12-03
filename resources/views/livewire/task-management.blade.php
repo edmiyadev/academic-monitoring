@@ -58,8 +58,8 @@
                     <td class="py-3 px-6 text-left">
                             <span class="
                                 px-2 py-1 rounded
-                                @if($task->status == 'pending') bg-yellow-200 text-yellow-800
-                                @elseif($task->status == 'in_progress') bg-blue-200 text-blue-800
+                                @if($task->status == \App\Enums\TaskStatusEnum::Pending->value) bg-yellow-200 text-yellow-800
+                                @elseif($task->status == \App\Enums\TaskStatusEnum::In_progress->value) bg-blue-200 text-blue-800
                                 @else bg-green-200 text-green-800
                                 @endif
                             ">
