@@ -26,7 +26,7 @@ class TaskManagement extends Component
     #[Rule('required|in:1,2,3')]
     public $status = 1;
 
-    #[Rule('nullable|date')]
+    #[Rule(rule: 'nullable|date')]
     public $start_date;
 
     #[Rule('nullable|date|after_or_equal:start_date')]
@@ -44,8 +44,8 @@ class TaskManagement extends Component
 
     public function render()
     {
-        $query = Task::query()->where('profile_id', auth()->user()->profile->id);
-
+        $query = Task::query()->where('profile_id', auth()->user()->profile->id)
+            ->whereRelation('studentEnrollment', 'status', '=', StudentEnrollmentStatusEnum::Progress->value);
         if ($this->filterStatus) {
             $query->where('status', $this->filterStatus);
         }
@@ -87,7 +87,6 @@ class TaskManagement extends Component
     public function createTask()
     {
         $validatedData = $this->validate();
-
         $validatedData = array_merge($validatedData, [
             'profile_id' => auth()->user()->profile->id,
         ]);

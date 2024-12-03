@@ -10,7 +10,7 @@ class Pensum extends Model
 {
     protected $fillable = ['career_id'];
 
-    public function carrer(): BelongsTo
+    public function career(): BelongsTo
     {
         return $this->belongsTo(Career::class);
     }

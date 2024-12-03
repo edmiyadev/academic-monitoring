@@ -7,9 +7,9 @@
         <div class="flex flex-col container mx-auto">
             <div>
                 <h2 class="text-4xl font-bold text-start mt-16">Pensum</h2>
-                <p class="mb-10 mt-4 font-light text-gray-500">Lista de materias</p>
+                <p class="mb-10 font-light text-gray-500">Lista de materias</p>
             </div>
-
+            <div class="w-full text-2xl text-center mb-3 font-sans font-semibold">{{ $pensum->career->name}}</div>
             <div>
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 border rounded-3xl mb-20">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-100 border rounded-3xl">
